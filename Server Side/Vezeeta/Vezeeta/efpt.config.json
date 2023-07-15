@@ -1,0 +1,97 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "VezeetaContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "dbContext",
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "Vezeeta",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[Addresses]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Answers]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Appointments]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Cities]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Clinic_Doctor]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Clinics]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Doctors]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Doctors_Phones]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Patient_Appoinment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Patients]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Prescriptions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Questions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Regions]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Reviews]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Specializations]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "desktop-vuvk6o7\\sql2017.Vezeeta.dbo",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

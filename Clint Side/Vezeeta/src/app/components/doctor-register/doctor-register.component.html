@@ -1,0 +1,401 @@
+<div class="container col-7 m-auto" *ngIf="registerCompleted==false">
+
+  <form [formGroup]="DoctorRegisterForm" enctype="multipart/form-data" method="post" (submit)="onSubmit($event)"
+    class="border-1 border-light bg-white">
+
+    <ng-container>
+      <div style="direction: rtl;">
+        <div *ngIf="lineIndex==0" style="height: 5px; width: 33%; background-color: rgba(33, 72, 212, 0.697); "></div>
+      </div>
+      <div style="direction: rtl;">
+        <div *ngIf="lineIndex==1" style="height: 5px; width: 66%; background-color: rgba(33, 72, 212, 0.697); "></div>
+      </div>
+      <div style="direction: rtl;">
+        <div *ngIf="lineIndex==2" style="height: 5px; width: 100%; background-color: rgba(33, 72, 212, 0.697); "></div>
+      </div>
+
+    </ng-container>
+
+
+    <ng-container *ngIf="lineIndex==0">
+
+      <!--  name input -->
+      <div class="form-outline my-2 d-flex justify-content-around ">
+
+        <div class="col-7 ">
+          <input required formControlName="name" type="text" id="DName" class="form-control col-8 " name="name"
+            placeholder="ُالاسم بالكامل" />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="DName">الاسم </label>
+        </div>
+      </div>
+      <ng-container *ngIf="nameController.touched || clickpress==true">
+        <div *ngIf="nameController.hasError('required')" class="text-danger input-group-text border-white bg-white">
+          يرجى ادخال الاسم
+        </div>
+
+        <div *ngIf="nameController.hasError('minlength')" class="text-danger input-group-text border-white bg-white">
+          يرجي ادخال الاسم بالكامل
+        </div>
+      </ng-container>
+
+      <!-- ------------------------------------------------------------------------------------------- -->
+      <!-- email input -->
+      <div class="form-outline my-2 d-flex justify-content-around ">
+
+        <div class="col-7">
+          <input required formControlName="email" type="email" id="Demail" class="form-control col-8"
+            placeholder="ُExample@domain.com" name="email" />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="Demail">البريد الالكتروني </label>
+        </div>
+
+      </div>
+      <ng-container *ngIf="emailController.touched || clickpress==true">
+        <div *ngIf="emailController.hasError('required')" class="text-danger input-group-text border-white bg-white">
+          يرجى ادخال البريد الالكتروني
+        </div>
+
+        <div *ngIf="emailController.hasError('email')" class="text-danger input-group-text m-auto bg-white">
+          البريد الالكتروني غير صحيح
+        </div>
+
+        <div *ngIf="emailExist==true" class="text-danger input-group-text m-auto bg-white">
+          هذا البريد بالفعل مسجل
+        </div>
+      </ng-container>
+
+
+
+      <!-- gender -->
+      <div class="form-outline my-2 d-flex justify-content-around ">
+
+        <div class="col-3">
+          <label for="male">ذكر</label>
+          <input required formControlName="gender" type="radio" id="male" name="gender" value="m" class="col-4" />
+        </div>
+        <div class="col-3">
+          <label for="female">انثي</label>
+          <input required formControlName="gender" type="radio" id="female" name="gender" class=" col-4" value="f"
+            checked />
+        </div>
+        <div class="col-2">
+          <label class="form-label "> النوع </label>
+        </div>
+
+        <!-- <div *ngIf="genderController.hasError('required')" class="text-danger input-group-text border-white bg-white">
+          رقم الموبايل غير صحيح
+        </div> -->
+      </div>
+
+      <!-- specilize drop down list  -->
+      <div class="form-outline my-2 d-flex justify-content-around  ">
+
+        <div class="col-7">
+          <select name="id_specialize" id="spec" class="form-select" formControlName="id_specialize">
+            <option *ngFor="let spec of specs" value="{{spec.id}}">{{spec.name}}</option>
+          </select>
+        </div>
+        <div class="col-2">
+          <label class="form-label  " for="spec">التخصص </label>
+        </div>
+      </div>
+      <ng-container *ngIf="id_specializeController.touched || clickpress==true">
+        <div *ngIf="id_specializeController.hasError('required')" class="text-danger">
+          يرجي اختيار التخصص
+        </div>
+
+      </ng-container>
+
+
+      <!-- Password input -->
+      <div class="form-outline my-2 d-flex justify-content-around ">
+
+        <div class="col-7">
+          <input required formControlName="password" name="password" type="password" id="pass"
+            class="form-control col-8" placeholder="كلمة المرور " />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="pass"> كلمة المرور </label>
+        </div>
+      </div>
+      <ng-container *ngIf="passwordController.touched || clickpress==true">
+        <div *ngIf="passwordController.hasError('required')" class="text-danger input-group-text border-white bg-white">
+          يرجى ادخال كلمة المرور
+        </div>
+
+        <div *ngIf="passwordController.hasError('minlength')"
+          class="text-danger input-group-text border-white bg-white">
+          كلمة المرور قصيرة جداً! يجب ان تكون اكثر من ٦ احرف
+        </div>
+      </ng-container>
+
+      <!-- confirm password -->
+      <div class="form-outline my-2 d-flex justify-content-around ">
+
+        <div class="col-7">
+          <input required formControlName="confirmPassword" type="password" id="Cpassword" class="form-control col-8"
+            placeholder=" تأكيد كلمة المرور " />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="Cpassword">تأكيد كلمة المرور </label>
+        </div>
+      </div>
+      <ng-container *ngIf="CpasswordController.touched || clickpress==true">
+        <div *ngIf="CpasswordController.hasError('required')"
+          class="text-danger input-group-text border-white bg-white">
+          يرجى ادخال كلمة المرور
+        </div>
+
+        <div *ngIf="CpasswordController.hasError('minlength')"
+          class="text-danger input-group-text border-white bg-white">
+          كلمة المرور قصيرة جداً! يجب ان تكون اكثر من ٦ احرف
+        </div>
+
+        <div *ngIf="confirmPassFlag===true && !CpasswordController.hasError('required')"
+          class="text-danger input-group-text border-white bg-white">
+          كلمة المرور غير مطابقة
+        </div>
+      </ng-container>
+
+    </ng-container>
+    <!--  end of the section one  -->
+
+    <ng-container *ngIf="lineIndex==1">
+
+
+      <!-- phone number one  -->
+      <div class="form-outline my-2 d-flex justify-content-around">
+
+        <!-- <div *ngIf="noOfPhone==0" class="col-1">
+          <button class="btn btn-danger" (click)="addAnotherPhone()">+</button>
+        </div> -->
+
+        <div class="col-7">
+          <input required formControlName="Doctors_Phone1" name="Doctors_Phones" type="tel" id="DPhone"
+            class="form-control col-8" placeholder="رقم الموبايل " />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="DPhone">رقم الموبايل 1 </label>
+        </div>
+      </div>
+      <ng-container *ngIf="DoctorsphoneController1.touched||clickpress==true">
+        <div *ngIf="DoctorsphoneController1.hasError('required')"
+          class="text-danger input-group-text border-white bg-white">
+          يرجى ادخال رقم الموبايل
+        </div>
+
+        <div *ngIf="DoctorRegisterForm.get('Doctors_Phone1')?.hasError('pattern')"
+          class="text-danger input-group-text border-white bg-white">
+          رقم الموبايل غير صحيح
+        </div>
+
+
+        <div *ngIf="phone1Exist==true" class="text-danger input-group-text border-white bg-white">
+          هذا الرقم بالفعل مسجل
+        </div>
+      </ng-container>
+
+
+      <!-- phone number two  -->
+      <!-- <div class="form-outline my-2 d-flex justify-content-around " *ngIf="noOfPhone==1">
+
+        <div>
+          <button class="btn btn-close btn-danger" (click)="removePhone()"></button>
+        </div>
+
+        <div class="col-7">
+          <input required formControlName="Doctors_Phone2" name="" type="tel" id="DPhone2" class="form-control col-8"
+            placeholder="رقم الموبايل " />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="DPhone2">رقم الموبايل 2 </label>
+        </div>
+      </div>
+      <ng-container *ngIf="DoctorsphoneController2.touched||clickpress==true">
+        <div *ngIf="DoctorsphoneController2.hasError('required') && noOfPhone==1"
+          class="text-danger input-group-text border-white bg-white">
+          يرجى ادخال رقم الموبايل
+        </div>
+
+        <div *ngIf="DoctorRegisterForm.get('Doctors_Phone1')?.hasError('pattern')  && noOfPhone==1"
+          class="text-danger input-group-text border-white bg-white">
+          رقم الموبايل غير صحيح
+        </div>
+
+
+        <div *ngIf="phone2Exist==true  && noOfPhone==1" class="text-danger input-group-text border-white bg-white">
+          هذا الرقم بالفعل مسجل
+        </div>
+      </ng-container> -->
+
+
+      <!-- experience and waiting time -->
+      <div class="d-flex justify-content-around">
+
+        <!-- waiting time -->
+        <div class="form-outline my-2 d-flex justify-content-around ">
+
+          <div class="col-7">
+            <select name="waiting_time" id="waiting_time" formControlName="waiting_time" class="form-select">
+              <option value="5">5 دقايق</option>
+              <option value="10">10 دقايق</option>
+              <option value="15">15 دقيقة</option>
+              <option value="20">20 دقيقة</option>
+            </select>
+          </div>
+          <div class="col-4">
+            <label class="form-label " for="waiting"> waiting time </label>
+          </div>
+
+          <ng-container *ngIf="waitTimeController.touched">
+            <div *ngIf="waitTimeController.hasError('required')" class="text-danger">
+              يرجى ادخال كلمة المرور
+            </div>
+
+            <div *ngIf="passwordController.hasError('minlength')" class="text-danger">
+              كلمة المرور قصيرة جداً! يجب ان تكون اكثر من ٦ احرف
+            </div>
+          </ng-container>
+        </div>
+
+        <!-- experience -->
+        <div class="form-outline my-2 d-flex justify-content-around ">
+
+          <div class="col-7">
+            <input required formControlName="experience" type="number" id="experience" class="form-control col-8"
+              placeholder="الخبرة  " name="experience" />
+          </div>
+          <div class="col-4">
+            <label class="form-label " for="experience"> الخبرة </label>
+          </div>
+
+          <ng-container *ngIf="experienceController.touched">
+            <div *ngIf="experienceController.hasError('required')" class="text-danger">
+              يرجى ادخال كلمة المرور
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <!-- birth date -->
+      <div class="form-outline my-2 d-flex justify-content-around ">
+
+        <div class="col-7">
+          <input required formControlName="birth_date" name="birth_date" type="date" id="date"
+            class="col-8 form-control" placeholder="  " />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="date"> تاريخ الميلاد </label>
+        </div>
+      </div>
+      <ng-container *ngIf="birth_dateController.touched">
+        <div *ngIf="birth_dateController.hasError('required')" class="text-danger">
+          يرجي اختيار تاريخ الميلاد
+        </div>
+      </ng-container>
+
+    </ng-container>
+
+    <!-- end of section two  -->
+    <ng-container *ngIf="lineIndex==2">
+      <!-- image input -->
+      <div class="form-outline my-4 d-flex justify-content-around ">
+
+        <div class="col-7">
+          <input required formControlName="image" type="file" accept=".png,.jpeg,.jpg" id="image" name="image"
+            class="form-control col-8" (change)="imagechange($event)" />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="image">ارفع صورة شخصية </label>
+        </div>
+      </div>
+      <ng-container *ngIf="imageController.touched">
+        <div *ngIf="imageController.hasError('required')" class="text-danger">
+          يرجي رفع الصورة الشخصية
+        </div>
+      </ng-container>
+      <!--  verification input -->
+      <div class="form-outline my-4 d-flex justify-content-around ">
+
+        <div class="col-7">
+          <input required formControlName="verification" type="file" accept=".png, .jpeg,.jpg" id="verification"
+            name="verification" class="form-control col-8" (change)="verfchange($event)" />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="verification">ارفع صورة كارنية النقابة </label>
+        </div>
+      </div>
+      <ng-container *ngIf="verificationController.touched">
+        <div *ngIf="verificationController.hasError('required')" class="text-danger">
+          يرجي رفع الصورة الشخصية
+        </div>
+      </ng-container>
+
+      <!-- online fees -->
+      <div class="form-outline my-2 d-flex justify-content-around ">
+
+        <div class="col-7">
+          <input required formControlName="online_fees" type="number" id="form3Example3" class="form-control col-8"
+            name="online_fees" placeholder="  سعر الكشف الاونلاين" />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="form3Example3"> سعر الكشف الاونلاين </label>
+        </div>
+
+      </div>
+
+      <!-- description -->
+      <div class="form-outline my-2 d-flex justify-content-around ">
+
+        <div class="col-7">
+          <input required formControlName="description" type="text" id="description" class="form-control col-8"
+            placeholder=" description " name="description" />
+        </div>
+        <div class="col-2">
+          <label class="form-label " for="description">description </label>
+        </div>
+
+        <ng-container *ngIf="decriptionController.touched">
+          <div *ngIf="decriptionController.hasError('required')" class="text-danger">
+            يرجي ادخال الوصف
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+
+
+    <div class="d-flex justify-content-around">
+      <div class=" me-auto" *ngIf="lineIndex<2"><button class="btn btn-danger" (click)="goNext($event)">التالي</button>
+      </div>
+      <div class=" ms-auto" *ngIf="lineIndex>0"> <button class="btn btn-danger" (click)="goBack()">السابق</button>
+      </div>
+    </div>
+
+    <div *ngIf="lineIndex==2" class="text-center text-lg-start mt-4 pt-2">
+      <button type="submit" class="btn btn-success btn-lg"
+        style="padding-left: 2.5rem; padding-right: 2.5rem;">register</button>
+
+    </div>
+
+  </form>
+</div>
+
+<div *ngIf="registerCompleted==true" class="container col-7 m-auto">
+  <div class="border-1 border-light bg-white " id="succMess">
+    <h1>
+      نجاح التسجيل
+
+    </h1>
+    <h2>
+      جاري مراجعة البيانات
+    </h2>
+    <h1 class="">
+      <i class="bi bi-check-circle text-success"></i>
+    </h1>
+  </div>
+
+</div>

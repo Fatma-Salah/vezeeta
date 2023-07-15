@@ -1,0 +1,38 @@
+nav .nav-link {
+    color: white !important;
+}
+nav {
+    font-size: 1rem;
+}
+ 
+li a:before {
+    content: "|";
+    margin: 0px 5px;
+    text-align: center;
+    color: white; 
+    margin:  0px 8px;
+    line-height: inherit;
+}
+.nav-link{
+    padding: 0px !important;
+}
+.dropMenu{
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0px;
+    left: unset;
+    display: block;
+    background-color: white;
+    min-width: 160px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 8px 16px 0px;
+    z-index: 50;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.23);
+    box-sizing: border-box;
+    padding: 8px;
+    width: unset;
+    direction: inherit;
+    border-radius: 3px !important;
+
+}

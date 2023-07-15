@@ -1,0 +1,79 @@
+<div class="container px-5 pt-3 ">
+    <div *ngIf="spec" class="my-3 px-5">
+        <div class="parent">اسألة في تخصص {{spec.name}}</div>
+        <div *ngFor="let question of spec.questions" class="bg-light rounded-2 p-2 my-4">
+            <div class="fg my-2">
+                <ng-container *ngIf="role === 'Doctor' && doc?.id_specialize == spec.id">
+                    <input type="button" value="أضف اجابتك" class="btn btn-bg text-light rounded-2" (click)="show(question)">
+                </ng-container>
+                <span *ngIf="question.gender == 'f'"> سألت إمرأة تبلغ</span><span *ngIf="question.gender == 'm'">سأل رجل يبلغ</span>  من العمر <span>{{question.age}}</span> عاماً
+            </div>
+            <div class="parent-p my-2">
+                {{question.title}}
+            </div>
+            <div class="desc my-2">
+                {{question.description}}
+            </div>
+            <hr>
+            <div class="d-flex justify-content-around">
+                <div class="fg px-2">
+                    <i class="fa-regular fa-calendar "></i>
+                    <span class="px-2">{{question.create_at |date:'dd MM yyyy'}}</span>
+                </div>
+                <div class="fg px-2">
+                    <i class="fa-regular fa-message"></i>
+                    <span class="px-2">{{question.answers.length}} اجابات</span>
+
+                </div>
+            </div>
+            <hr>
+            <ng-container *ngIf="question.answers.length > 0">
+                <div  *ngFor="let answer of question.answers">
+                    <div class="d-flex flex-row pb-2">
+                        <img [src]="answer.dr.image">
+                        <div class="p-3">
+                        <div class="dname">{{answer.dr.name}}</div>
+                        <div class="fg">
+                            <span *ngIf="answer.dr.gender == 'f'">دكتورة</span>
+                            <span *ngIf="answer.dr.gender == 'm'">دكتور</span>
+                             {{spec.name}}
+                        </div>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <div class="ans py-2">
+                            {{answer.description}}
+                        </div>
+                        <div class="anc">
+                            تمت الاجابة في
+                            {{answer.create_at |date:'dd MM yyyy'}}
+                            
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+            
+        </div>
+        <p-paginator id="paginator" (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="specoriginal.length"></p-paginator>
+
+    </div>
+</div>
+<p-dialog header="" [(visible)]="visible" [modal]="true" [style]="{ width: '50vw' }" [draggable]="false" [resizable]="false">
+    <ng-container *ngIf="hasanswer">
+        <div class="text-success text-center"><i class="fa-solid fa-circle-check fs-3"></i></div>
+        <div class="parent my-3 text-center">لقد قمت باضافة اجابتك من قبل</div>
+    </ng-container>
+    <ng-container *ngIf="!hasanswer">
+        <div class="form-group pb-5 mb-2">
+            <label for="q-title" class="col-form-label parent">اجابتك</label>
+            <input type="text" maxlength="100" [(ngModel)]="answertitle" placeholder="اصف الاجابة هنا" class="form-control" id="q-title">
+            <ng-container *ngIf="notvalid">
+                <span class="form-text text-danger">
+                    هذا الحقل مطلوب ولا يقل عن 10 أحرف 
+                </span>
+            </ng-container>
+            <input type="button" value="أضف اجابتك" (click)="addanswer()" class="btn mt-4 btn-bg text-light rounded-2">
+            
+        </div>
+    </ng-container>
+</p-dialog>

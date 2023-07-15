@@ -1,0 +1,54 @@
+.root{
+    --background:#E2E6EA;
+    --bluecolor:#0070CD;
+    --lightblue:#E6F1FF;
+}
+body{
+    background-color: var(--background);
+    margin: auto;
+    text-align: right;
+}
+.btn-blue{
+    border-color: var(--bluecolor);
+    color: var(--bluecolor);
+    background-color: var(--lightblue);
+}
+.btn-sub{
+    background-color: #0070CD;
+    width: 100%;
+    color: white;
+    
+}
+.div-con{
+    width: 50%;
+ background-color: white;
+ margin: auto;
+ padding: 3%;
+ text-align: right;
+ border-radius: 10px;
+}
+input{
+    direction: rtl;
+}
+.cs{
+    font-size: 1rem;
+    font-weight: normal;
+}
+.fg{
+    color: gray;
+    font-size: 0.8rem;
+
+}
+.parent {
+    font-size: 1.3rem;
+    color: rgb(74, 73, 73);
+    font-weight: bold;
+} 
+:host ::ng-deep{
+    .wfull.p-dropdown{
+        width: 100%;
+    }
+}
+.dire{
+direction: ltr;
+}

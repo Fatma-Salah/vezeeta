@@ -1,0 +1,94 @@
+<ng-container *ngIf="updateClinicFlag==true">
+  <div class="col-12 col-md-6 m-auto my-5">
+    <form class="row g-3 " [formGroup]="UpdateclinicForm" (submit)="updateClinic()">
+      <h1>تعديل عيادة</h1>
+      <div class="col-6">
+
+        <div *ngIf="uregionController.hasError('required')" class="text-danger">*</div>
+        <label for="name">اسمة العيادة</label>
+        <input type="text" class="form-control" formControlName="uclinicName" id="name" value="" required
+          placeholder="اسم العيادة">
+      </div>
+      <div class="col-6">
+
+        <div *ngIf="uclinicPhoneController.hasError('required')" class="text-danger">*</div>
+        <label for="tel">التيلفون</label>
+        <input type="tel" class="form-control" id="tel" value="" formControlName="uClinicPhone" required
+          placeholder="رقم التليفون">
+      </div>
+
+      <div class="col-md-5">
+        <div *ngIf="ucityController.hasError('required')" class="text-danger">*</div>
+        <label for="city">المحافظة</label>
+        <select name="" id="city" class="form-select" (change)="cityChange($event,inp)" formControlName="ucity" #inp>
+          <option value="" disabled selected>اختار المحافظة</option>
+          <option *ngFor="let city of cities" value="{{city?.id}}">{{city?.name}}</option>
+
+        </select>
+      </div>
+      <div class="col-md-5">
+        <div *ngIf="uregionController.hasError('required')" class="text-danger">*</div>
+        <label for="region">المنطقة</label>
+        <select name="" id="region" class="form-select" formControlName="uregion">
+          <option value="" disabled selected>اختار المنطقة</option>
+          <option *ngFor="let region of selectRegion" value="{{region?.id}}">{{region?.name}}</option>
+
+        </select>
+      </div>
+
+      <div class="col-3">
+
+        <!-- <div *ngIf="clinicNameController.hasError('required')" class="text-danger">*</div> -->
+        <input type="text" class="form-control" id="sq" value="" formControlName="u_sq" required placeholder="المربع">
+      </div>
+      <div class="col-9">
+
+        <div *ngIf="ustController.hasError('required')" class="text-danger">*</div>
+        <label for="st">الشارع</label>
+        <input type="text" class="form-control" id="st" value="{{this.Dr_clinic?.clinic?.address?.street}}"
+          formControlName="ust" required placeholder="الشارع">
+      </div>
+      <div class="col-4">
+
+        <div *ngIf="uappartController.hasError('required')" class="text-danger">*</div>
+        <label for="appart">شقة</label>
+        <input type="text" class="form-control" id="appart" value="" formControlName="u_appart" required
+          placeholder="شقة">
+      </div>
+
+      <div class="col-4">
+
+        <div *ngIf="ufloorController.hasError('required')" class="text-danger">*</div>
+        <label for="floor">الدور</label>
+        <input type="text" class="form-control" id="floor" value="" formControlName="ufloor" required
+          placeholder="الدور">
+      </div>
+      <div class="col-4">
+
+        <label for="build">عمارة</label>
+        <input type="text" class="form-control" id="build" value="" formControlName="ubuilding" required
+          placeholder="عمارة">
+      </div>
+      <div class="col-8">
+
+        <label for="note">معلومات اضافية</label>
+        <input type="text" class="form-control" id="note" value="" formControlName="u_descr" required
+          placeholder="معلومات اضافية ">
+      </div>
+      <div class="col-4">
+        <label for="note"> السعر</label>
+        <input type="number" class="form-control" id="note" value="" formControlName="fees" required
+          placeholder="السعر  ">
+      </div>
+
+
+      <div *ngIf="clUpdateFlag==false" class="text-danger">يوجد خطأ في البيانات </div>
+      <div class="col-12 d-flex justify-content-between">
+        <button class="btn btn-primary" type="submit">تعديل </button>\
+        <a [routerLinkActive]="'linkActive '" [routerLink]="['/doctor/profile']"
+          [routerLinkActiveOptions]="{ exact: true }" class="btn btn-primary">الرجوع الي الصفحة الشخصية</a>
+      </div>
+    </form>
+
+  </div>
+</ng-container>

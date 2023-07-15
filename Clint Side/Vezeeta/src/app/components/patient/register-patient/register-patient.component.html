@@ -1,0 +1,150 @@
+<div class="container my-5 parent">
+    <div class="row">
+        <div class=" col-md-7 col-lg-5 m-auto">
+            <div class="joinNow">انضم الان</div>
+            <div class="bg-white p-5 rounded ">
+                <form  [formGroup]="formRegister" class="mt-4" (submit)="addPatient($event)">
+                    <div class="d-flex p-1 m-1">
+                        <label for="patientName" class="control-label col-4">الاسم : </label>
+                        <div class="col-8">
+                            <input type="text" name="patientName" id="patientName"  placeholder="الإسم بالكامل" class="form-control"  formControlName ="patientName" />
+                            <ng-container *ngIf="getName.touched || showError">
+        
+                                <div
+                                  *ngIf="getName.hasError('required')" 
+                                  class=" text-danger fs-6 mb-2"
+                                >
+                                يرجى ادخال الاسم 
+                                </div>
+                                <div
+                                  *ngIf="getName.hasError('minlength')" 
+                                  class="mb-2 fs-6 text-danger"
+                                >
+                                   الاسم يجب ان يكون اكثر من حرفين 
+                                </div>
+                              </ng-container>
+                        </div>
+                    </div>
+                    <div class="d-flex p-1 m-1">
+                        <label  for="patientPhone" class="control-label col-4">رقم الموبايل : </label>
+                        <div class="col-8">
+                            <input  type="tel" name="patientPhone" placeholder="رقم الموبايل" id="patientPhone" class="form-control" formControlName="patientPhone">
+                            
+                            <ng-container *ngIf="getPhone.touched || showError">
+                              
+                                <div
+                                  *ngIf="getPhone.hasError('required')" 
+                                  class=" text-danger fs-6 mb-2"
+                                >
+                                يرجى  ادخال رقم الموبايل / الخط الأرضي
+                                </div>
+                               
+                                <div
+                                  *ngIf="getPhone.hasError('pattern')" 
+                                  class="mb-2 fs-6 text-danger"
+                                >
+                                   عفوا هذا الرقم غير صالح , برجاء ادخال رقم صحيح
+                                </div>
+                              </ng-container>
+
+                        </div>
+                    </div>
+                    <div class="d-flex p-1 m-1">
+                        <label asp-for="patientEmail" class="control-label col-4">  البريد الالكتروني : </label>
+                        <div class="col-8">
+                            <input type="email" id="patientEmail" name="patientEmail" placeholder="example@AppDomain.com" class="form-control" formControlName="patientEmail">
+                            <ng-container *ngIf="getEmail.touched || showError">
+                                <div
+                                  *ngIf="getEmail.hasError('required')" 
+                                  class=" text-danger fs-6 mb-2"
+                                >
+                                يرجى  ادخال البريد الالكتروني
+                                </div>
+                              </ng-container>
+                        </div>
+                    </div>
+                    <div class="d-flex p-1 m-1">
+                        <label for="patientBirth_date" class="control-label col-4">    تاريخ الميلاد : </label>
+                        <div class="col-8">
+                            <input  type="datetime-local" name="patientBirth_date" id="patientBirth_date" placeholder="تاريخ الميلاد" class="form-control" formControlName="patientBirth_date" />
+                            <ng-container *ngIf="getBirth.touched || showError">
+                                <div
+                                  *ngIf="getBirth.hasError('required')" 
+                                  class=" text-danger fs-6 mb-2"
+                                >
+                                يرجى  ادخال تاريخ الميلاد
+                                </div>
+                              </ng-container>
+                        </div>
+                    </div>
+                    <div class="d-flex p-1 m-1">
+                        <label  for="patientAddress" class="control-label col-4">       العنوان : </label>
+                        <div class="col-8">
+                            <input type="text" name="patientAddress" id="patientAddress" placeholder="العنوان" class="form-control" formControlName="patientAddress" />
+                            <ng-container  *ngIf="getAddress.touched || showError">
+                                <div *ngIf="getAddress.hasError('required')"    class=" text-danger fs-6 mb-2">
+                                  يرجى  ادخال العنوان
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    <div class="d-flex p-1 m-1">
+                        <label for="patientGender" class="control-label col-4">   النوع : </label>
+                        <div class="col-8"> 
+                                <select name="patientGender" id="patientGender" class="form-control" formControlName="patientGender">
+                                <option value="">-- اختر --  </option>
+                                    <option value="M">ذكر</option>
+                                    <option value="F">انثى</option>
+                                </select>
+                                <ng-container  *ngIf="getGender.touched || showError">
+                                        <div *ngIf="getGender.hasError('required')"    class=" text-danger fs-6 mb-2">
+                                          يرجى   ادخال النوع
+                                        </div>
+                                </ng-container>
+
+                        </div>
+                    </div>
+                    <div class="d-flex p-1 m-1">
+                        <label for="patientPassword" class="control-label col-4"> كلمة المرور : </label>
+                        <div class="col-8">
+                    <input type="password" name="patientPassword" id="patientPassword" placeholder="كلمة المرور" class="form-control"  formControlName="patientPassword" />
+                    <ng-container *ngIf="getPass.touched || showError">
+        
+                        <div
+                          *ngIf="getPass.hasError('required')" 
+                          class=" text-danger fs-6 mb-2"
+                        >
+                        يرجى  ادخال كلمة المرور
+                        </div>
+                        <div
+                          *ngIf="getPass.hasError('pattern')" 
+                          class="mb-2 fs-6 text-danger"
+                        >
+                        كلمة المرور يجب ان تكون    8 أحرف على الأقل
+                        <br>  تحتوي على حرف كبير واحد على الأقل
+                        <br>   تحتوي على حرف صغير واحد على الأقل
+                        <br> تحتوي على رقم واحد على الأقل
+                        <br> تحتوي على حرف خاص واحد على الأقل (مثل @ ، # ، $ ، إلخ.)
+                        </div>
+                      </ng-container>
+                        </div>
+                    </div>
+                    <div
+                    *ngIf="errorFromServer !='' " 
+                    class=" text-danger fs-4 text-center mb-2"
+                  >{{errorFromServer}}
+                  </div>
+                    <div class="col-10 m-auto mt-3">بقيامك بالتسجيل فانت توافق على <a style="color: rgb(0, 112, 205);" href="#">الشروط و القوانين</a></div>
+
+                    <div class="form-group">
+                        <input type="submit" value="اشترك الان" class="btn btn-danger m-auto d-block px-4 mt-4" />
+                    </div>
+                </form>
+                <hr style="height:2px"/> 
+                <div class="log m-3 m-auto ">مسجل بالفعل في فيزيتا ؟<a class="mx-3"    [routerLink]="['/login']"  >دخول</a></div>
+            </div>
+        </div>
+    </div>
+
+</div>
+

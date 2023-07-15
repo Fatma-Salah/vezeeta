@@ -1,0 +1,69 @@
+<div class="container mt-5">
+    <div class="div-con">
+        <div class=" mb-2">
+            <p-dropdown styleClass="wfull" [(ngModel)]="spec" [options]="specs" optionLabel="name"></p-dropdown>
+        </div>
+        <form (submit)="submitquestion($event)" [formGroup]="addquestionForm">
+            <div class="form-group mb-2">
+                <label for="q-title" class="col-form-label parent"><span class=" p-1 cs">(لن يتم الافصاح عن
+                        هويتك)</span>سؤالك</label>
+                <input type="text" maxlength="50" formControlName="title" placeholder="مثال:ما هي اسباب تكون حب الشباب؟"
+                    class="form-control" id="q-title">
+                <span class=" fg p-1"> حرفا {{GetTitle.value?.length}}/50</span>
+                <ng-container *ngIf="GetTitle.touched">
+                    <span *ngIf="GetTitle.hasError('required')" class="form-text text-danger">
+                        هذا الحقل مطلوب
+                    </span>
+                </ng-container>
+            </div>
+
+            <div class="form-group mb-2">
+                <input type="text" maxlength="250" formControlName="desc"
+                    placeholder="وصف السؤال (شرح أعراض مشكلتك الصحية)" class="form-control" id="q-desc">
+                <span class=" fg p-1"> حرفا {{GetDesc.value?.length}}/250</span>
+                <ng-container *ngIf="GetDesc.touched">
+                    <span *ngIf="GetDesc.hasError('required')" class="form-text text-danger">
+                        هذا الحقل مطلوب
+                    </span>
+                </ng-container>
+            </div>
+
+            <div class="form-group mb-2">
+                <label for="q-type" class="col-form-label parent"> السؤال</label><br>
+                <p-selectButton class="dire" [options]="stateOptions2" formControlName="type" optionLabel="label" optionValue="value"></p-selectButton>
+            </div>
+            <div class="form-group mb-2">
+                <label for="q-gender" class="col-form-label parent"> اختار النوع</label><br>
+                <p-selectButton class="dire" [options]="stateOptions1" formControlName="gender" optionLabel="label" optionValue="value"></p-selectButton>
+            </div>
+            <div class="form-group mb-2">
+                <label for="q-age" class="col-form-label parent"><span class="cs">(عام) </span>
+                    كم <span *ngIf="GetType.value == 'لشخص أخر'">العمر؟</span>
+                    <span *ngIf="GetType.value == 'لنفسي'  || GetType.value == null">عمرك؟</span>
+
+                </label>
+                <input type="number" min="0" formControlName="age" class="form-control" id="q-title">
+                <ng-container *ngIf="GetAge.touched">
+                    <span *ngIf="GetAge.hasError('required')" class="form-text text-danger">
+                        هذا الحقل مطلوب
+                    </span>
+                </ng-container>
+            </div>
+            <ng-container *ngIf="invalidinput" class="p-1">
+                <span *ngIf="addquestionForm.hasError" class="form-text text-danger fs-5">
+                    من فضلك ادخل بيانات كاملة
+                </span>
+            </ng-container>
+            <button type="submit" class="btn btn-sub my-2">التالي</button>
+        </form>
+        <div class="parent">
+            <span class="cs">
+                نصوص الإجابات على فيزيتا ليست مخصصة للتشخيص الفردي أو العلاج أو الوصفات الطبية. لهذه الاغراض، يرجى
+                استشارة الطبيب
+
+            </span>
+        </div>
+
+    </div>
+
+</div>

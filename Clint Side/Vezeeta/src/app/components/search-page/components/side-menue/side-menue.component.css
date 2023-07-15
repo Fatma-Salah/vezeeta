@@ -1,0 +1,24 @@
+i {
+    padding-bottom: 5px;
+    position: relative;
+}
+
+i::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 3px;
+    background-color: #EF0F0F;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+}
+
+button {
+    color: #0070CD !important;
+}
+
+.card-header {
+    background: #0070CD !important;
+    color: white !important;
+}

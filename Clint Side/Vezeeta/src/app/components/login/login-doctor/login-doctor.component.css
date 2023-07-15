@@ -1,0 +1,24 @@
+.joinNow {
+    border-radius: 11px 11px 0px 0px;
+    font-size: 16px;
+    background-color: rgb(0, 112, 205);
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 4px 0px;
+}
+
+.parent {
+    direction: rtl;
+    font-size: 1.2rem;
+    color: rgb(102, 102, 102);
+} 
+hr+.log{
+    width: fit-content;
+}
+.log>a { 
+    color: rgb(0, 112, 205); 
+    font-weight: 700;
+    border-bottom: 2px solid rgb(239, 15, 15);
+    text-decoration: none;
+    cursor: pointer;
+}

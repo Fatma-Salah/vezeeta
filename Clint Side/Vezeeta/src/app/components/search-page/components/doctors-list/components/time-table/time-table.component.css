@@ -1,0 +1,9 @@
+.card-header {
+    background-color: #0070CD;
+    color: white;
+}
+
+.card-footer {
+    background-color: #EF0F0F;
+    color: white !important;
+}

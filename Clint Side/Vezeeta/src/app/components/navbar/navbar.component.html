@@ -1,0 +1,66 @@
+
+<header  >
+    <nav class="navbar navbar-expand-lg py-3" style="background-color:rgb(0,112,205)">
+        <div class="container">
+         
+            <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                <ul class="navbar-nav ms-auto  mb-2 mb-lg-0">
+                    <li class="nav-item  text-white"> 
+                        <img src="assets/images/Egypt.jpeg" alt="مصر" class="d-inline-block mx-1">
+                        <span >مصر</span> 
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            دخول
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"  [routerLink]="['/login/doctor']">دكتور</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" [routerLink]="['/login']" >  مريض </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            انضم الأن
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item"  [routerLink]="['/register/doctor']">دكتور</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item"  [routerLink]="['/registerPatient']"> مريض </a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white" aria-current="page" href="#">فزيتا للأطباء</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">اتصل بنا</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{name}} 
+                        </a>
+                        <ul class="dropdown-menu  ">
+                            <li><a class="dropdown-item"   [routerLink]="['/account']">بياناتي</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" [routerLink]="['/patientAppoint']"> مواعيدي </a></li> 
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" [routerLink]="['/questions/patient']"> أسئلتي  </a></li> 
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item"  [routerLink]="['/']"> خروج </a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+            <div class="">
+                <a class="navbar-brand text-white" href="#">
+                    <img alt=" | احجز أفضل دكتور واطلب أدويتك بسهولة" title="احجز مع أكبر و أحسن دكاترة في مصر" src="assets/images/vezeetaLogo.jpg" class="HeaderTopBarstyle__MainLogo-sc-1o1fu0h-0 KIjUU">
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>

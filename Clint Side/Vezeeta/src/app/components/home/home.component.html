@@ -1,0 +1,116 @@
+<div class="bg-white">
+    <div id="carouselExampleSlidesOnly" class="carousel slide " data-bs-ride="carousel"
+        style="position: relative !important;">
+        <div class="carousel-inner" id="co">
+            <div class="carousel-item active">
+                <img src="assets/images/caursol1 (1).jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/caursol3.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="assets/images/caursol2.jpg" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <div id="search" class="container  text-right">
+            <div class="d-flex flex-column align-items-start">
+                <h1>
+                    رعاية صحية لحياة أفضل ليك</h1>
+                <h3> <i class="">احجز أونلاين أو كلم </i> <i class="fa fa-phone-alt text-danger "></i>16676 </h3>
+            </div>
+            <app-search></app-search>*
+
+        </div>
+    </div>
+
+</div>
+<!--****************************************** section -->
+<div class="container mt-5">
+    <div class="display-5 mb-4" style="color: #666666;">حلول جديدة لرعاية أفضل ليك</div>
+
+    <div class="card mb-5 p-4 pb-2">
+        <div class="card-body row ">
+            <div class="col-1 ms-3"><img style="width: 100px;height:100px ; border-radius:80px ;"
+                    src="https://d1aovdz1i2nnak.cloudfront.net/vezeeta-web-reactjs/55283/_next/static/images/qnaDoctor.jpg"
+                    alt=""></div>
+            <div class="col-8">
+                <h2 class="card-title " style="font-weight: bold;font-size: 25px; ">لديك سؤال طبي؟</h2>
+                <h2 class="card-text">ارسل سؤالك الطبى واحصل على اجابة من دكتور متخصص</h2>
+            </div>
+            <div class="col-2 d-flex align-items-center justify-content-end"><a
+                    class="btn btn-primary text-white px-5 py-3" [routerLink]="['/questions/ask']">اسأل اللأن</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ***************************************** section -->
+<div class="container mt-5">
+    <div class="display-5 mb-4" style="color: #666666;">لماذا فيزيتا؟</div>
+
+    <div class="card mb-5 p-4 pb-2">
+        <div class="card-body d-flex justify-content-end ">
+            <div class="col">
+                <h2 class="card-title " style="font-weight: bold;font-size: 25px; ">لماذا فيزيتا؟</h2>
+                <h2 class="card-text">فيزيتا هي اول منصه بتساعدك تتواصل مع الدكتور</h2>
+                <h2 class="card-text">متشلش هم الحجز دلوقتي الموضوع بقي سهل</h2>
+            </div>
+            <div class="col  d-flex justify-content-end"><img style="width: 300px;height:300px ; "
+                    src="../assets/images/about.jpg" alt=""></div>
+        </div>
+    </div>
+</div>
+<!-- ***************************************** section -->
+
+<div class=" bg-white p-5">
+    <div class="container">
+        <div class=" display-5 mb-4" style="color: #666666;">احجز كشف حسب التخصص </div>
+    </div>
+    <!-- ssssssssssssssssssssssssssssssssssssssssssssssssssssssss -->
+    <div class="container">
+
+        <div class="card" style="direction: ltr;">
+            <p-carousel [value]="products" [numVisible]="3" [numScroll]="1" [responsiveOptions]="responsiveOptions">
+                <ng-template let-product pTemplate="item">
+                    <div class="border-1 surface-border border-round m-2 text-center py-5 px-3">
+
+                        <div class="card">
+                            <img src="../../../assets/images/{{product.id}}.jpeg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h2 class="mb-1">{{ product.name }}</h2>
+                                <button class="btn btn-primary" (click)="navigate(product.id)">احجز الان</button>
+                            </div>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
+    </div>
+</div>
+<!--****************************************** section -->
+
+<div class="container">
+    <div class="row m-5">
+        <div class="col mx-3">
+            <div><i class="fa-solid fa-hands-holding-child my-4"></i></div>
+            <h2>كل احتياجاتك على فيزيتا</h2>
+            <p>ابحث و احجز كشف مع دكتور في عيادة، مستشفى، زيارة منزلية، أو عبر مكالمة. ممكن كمان تطلب أدوية، أو تحجز
+                خدمة أو عملية
+                بأحسن سعر.</p>
+        </div>
+        <div class="col mx-3">
+            <div><i class="fa-solid fa-user-tie my-4"></i></div>
+            <h2>تقييمات حقيقية من المرضى</h2>
+            <p>تقييمات الدكاترة من مرضى حجزوا على فيزيتا و زاروا الدكتور بالفعل.</p>
+        </div>
+        <div class="col mx-3">
+            <div><i class="fa-regular fa-calendar-check my-4"></i></div>
+            <h2>حجزك مؤكد مع الدكتور</h2>
+            <p>حجزك مؤكد بمجرد اختيارك من المواعيد المتاحة للدكتور.</p>
+        </div>
+        <div class="col mx-3">
+            <div><i class="fa-solid fa-shield-halved my-4"></i></div>
+            <h2>احجز مجاناً، و ادفع في العيادة</h2>
+            <p>سعر الكشف على فيزيتا نفس سعر الكشف في العيادة، بدون أي مصاريف إضافية.</p>
+        </div>
+    </div>
+</div>

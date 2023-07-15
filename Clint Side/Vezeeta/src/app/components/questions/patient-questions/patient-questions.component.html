@@ -1,0 +1,56 @@
+<div class="container px-5 pt-3">
+    <div>
+        make quetion like in home
+    </div>
+    <div *ngIf="patient?.questions.length > 0">
+        <div *ngFor="let question of patient.questions" class="bg-light rounded-2 p-2 my-4">
+            <div class="fg my-2">
+                <span *ngIf="question.gender == 'f'"> سألت إمرأة تبلغ</span><span *ngIf="question.gender == 'm'">سأل رجل يبلغ</span>  من العمر <span>{{question.age}}</span> عاماً
+            </div>
+            <div class="parent-p my-2">
+                {{question.title}}
+            </div>
+            <div class="desc my-2">
+                {{question.description}}
+            </div>
+            <hr>
+            <div class="d-flex justify-content-around">
+                <div class="fg px-2">
+                    <i class="fa-regular fa-calendar "></i>
+                    <span class="px-2">{{question.create_at |date:'dd MM yyyy'}}</span>
+                </div>
+                <div class="fg px-2">
+                    <i class="fa-regular fa-message"></i>
+                    <span class="px-2">{{question.answers.length}} اجابات</span>
+
+                </div>
+            </div>
+            <ng-container *ngIf="question.answers?.length > 0">
+                <div  *ngFor="let answer of question.answers">
+                     <hr>
+                    <div class="d-flex flex-row pb-2">
+                        <img [src]="answer.dr.image">
+                        <div class="p-3">
+                        <div class="dname">{{answer.dr.name}}</div>
+                        <div class="fg">
+                            <span *ngIf="answer.dr.gender == 'f'">دكتورة</span>
+                            <span *ngIf="answer.dr.gender == 'm'">دكتور</span>
+                             {{answer.dr.id_specializeNavigation.name}}
+                        </div>
+                        </div>
+                    </div>
+                    <div class="p-2">
+                        <div class="ans py-2">
+                            {{answer.description}}
+                        </div>
+                        <div class="anc">
+                            تمت الاجابة في
+                            {{answer.create_at |date:'dd MM yyyy'}}
+                            
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

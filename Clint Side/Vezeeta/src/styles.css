@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+:root {
+    --text: #082524;
+    --background: #def7f6;
+    --primary-button: #4c98d6;
+    --secondary-button: #c9cbf3;
+    --accent: #23299a;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-transform: capitalize;
+}
+/* html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; } */
+html {
+    font-size: 14px;
+  }
+  
+  @media (min-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+  
+  html {
+    position: relative;
+    min-height: 100%;
+  }
+  
+  
+  body {
+      background-color: rgb(226, 230, 234) !important;
+      margin: 0px;
+      height: -webkit-fill-available;
+      font-family: TheSans !important;
+      margin-bottom: 60px;
+      direction: rtl;
+  }
+
+  .btn-danger{
+    background-color: rgb(239, 15, 15);
+  }

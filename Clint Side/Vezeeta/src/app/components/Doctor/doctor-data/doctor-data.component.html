@@ -1,0 +1,115 @@
+<div id="mainwrap" class="row" *ngIf="doctorLoad && clinicLoad">
+  <div id="cardParent" class="col-6 mx-5">
+    <div class="card  cardStyle col-12">
+      <div class="">
+        <div class="row">
+          <div class="profile-img col-4">
+            <img src={{doctor?.image}} alt="" />
+          </div>
+          <div class="col-12 col-md-8 row">
+            <h2 class="col-8 col-md--8">
+              دكتور {{doctor?.name}}
+            </h2>
+            <h2 class="col-4 col-md-4">
+              مشاهدات
+            </h2>
+            <h3 class="col-12">
+              تخصص : {{this.doctor?.id_specializeNavigation?.name}}
+            </h3>
+            <div class="row col-12">
+              <div>
+                <span class="col-1"><i class="fa-solid fa-star text-warning"></i></span>
+                <span class="col-1"><i class="fa-solid fa-star text-warning"></i></span>
+                <span class="col-1"><i class="fa-solid fa-star text-warning"></i></span>
+                <span class="col-1"><i class="fa-solid fa-star text-warning"></i></span>
+                <span class="col-6 me-5">التقييم العام من 3</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-body">
+
+        </div>
+      </div>
+    </div>
+
+    <div class="card  cardStyle col-12">
+      <div class="">
+        <div class="row">
+
+          <div class="col-4 me-4"> <i class="fa-solid fa-info text-primary"></i></div>
+          <h2 class="col-7 col-md--6">
+            معلومات عن الدكتور
+          </h2>
+        </div>
+
+      </div>
+
+      <div class="card-body">
+        <p>
+          {{doctor?.description}}
+          ماجستير و دكتوراة أمراض النساء و التوليد - جامعة القاهرة . عضو الجمعية الاوروبية للتكاثر البشري و علوم الاجنة
+          عضو
+          الجمعية الامريكية لجراحي مناظير امراض النساء زميل مستشفي جايز و سان توماس-لندن… ملحوظة: يوجد بالعيادة دفع
+          بالڤيزا
+          كارت.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-4 mx-4">
+
+
+
+    <div class="card  cardStyle col-12">
+      <div class="joinNow "></div>
+      <div class="card-header bg-white">
+        <div class="m-auto text-center">
+          <h2 class="">
+            احجـــز<br>
+            كشف طبي
+          </h2>
+          <h3>
+
+          </h3>
+        </div>
+
+      </div>
+
+      <div class="card-body row">
+        <div class="col-5">
+          <i class="fa-regular fa-money-bill-1 text-primary"><span class="m-2">الكشف</span></i>
+          <div>{{Dr_clinic?.fees}}.00 جنيه</div>
+        </div>
+        <div class="col-5">
+          <i class="fa-regular fa-clock text-success"><span class="m-2">مده الانتظار</span></i>
+          <div class="text-success">{{doctor?.waiting_time}} </div>
+        </div>
+
+        <div class="col-12 row my-4">
+          <div class="col-3">
+            <i class="fa-solid fa-location-dot text-primary">العنوان</i>
+          </div>
+          <p class="col-8">
+            {{Dr_clinic?.clinic?.address?.city.name}} :
+            شارع :
+            {{Dr_clinic?.clinic?.address?.street}}\
+            مربع :
+            {{Dr_clinic?.clinic?.address?.square}}\
+            عمارة :
+            {{Dr_clinic?.clinic?.address?.building}}\
+            الدور :
+            {{Dr_clinic?.clinic?.address?.floor_num}}\
+            شقة :
+            {{Dr_clinic?.clinic?.address?.flat_num}}\
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>

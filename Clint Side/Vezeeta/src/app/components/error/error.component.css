@@ -1,0 +1,44 @@
+.parent{
+    
+        display: flex;
+        background: rgb(255, 255, 255);
+        padding: 5%;
+        border-radius: 10px;
+        justify-content: space-between;
+        align-items: center;
+        margin: 50px 0px;
+    flex-wrap: wrap;
+}
+img{
+    padding: 4.5% 0px;
+    height: 350px;
+}
+.notFound {
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: block;
+    color: rgb(128, 129, 132);
+    text-align: right;
+    margin-bottom: 1rem;
+}
+
+.Dr{
+    padding: 5px 10px;
+    cursor: pointer;
+    margin:0px 15px;
+    background-color: rgb(0, 112, 205);
+    border: 1px solid rgb(0, 112, 205); 
+    color: rgb(255, 255, 255);
+    border-radius: 5px !important;
+    font-size: 20px;
+}
+.home{
+    padding: 5px 10px;
+    border: 2px solid rgb(0, 112, 205);
+    font-size: 20px;
+ 
+    cursor: pointer;
+    color: rgb(0, 112, 205);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px !important;
+}

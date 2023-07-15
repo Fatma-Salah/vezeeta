@@ -1,0 +1,52 @@
+<div class="container my-5 parent">
+    
+    <div class="row">
+        <div class=" col-md-7 col-lg-5 m-auto">
+            <div class="joinNow"> ادخل الكود </div>
+            <div class="bg-white p-5 rounded "> 
+                <form  [formGroup]="formConfirmCode"  class="mt-4">
+                      
+                    <div class="d-flex p-1 m-1">
+                        
+                        <div class="col-11">
+                            <input type="number" id="Code" name="Code"  class="form-control" formControlName="Code">
+                            <ng-container class="m-2" *ngIf="getCode.touched || showError">
+                                <div
+                                  *ngIf="getCode.hasError('required')" 
+                                  class=" text-danger fs-6 mb-2"
+                                >
+                                يرجى  ادخال   الكود
+                                </div>
+                               
+                              <div
+                              *ngIf="erorrFromServer!=''" 
+                              class=" text-danger fs-6 mb-2"
+                            >
+                           هذا الكود غير صحيح 
+                            </div>
+                              </ng-container>
+                              
+                              <div
+                              *ngIf="isCodeConfirm" 
+                              class=" text-danger fs-6 mb-2"
+                            >
+                    سيتم تحويلك لصفحة تغيير كلمة المرور في خلال لحظات 
+                            </div>
+                        </div>
+                    </div>
+               
+                </form>
+                <hr style="height:2px" />
+                <div class="log m-3 m-auto ">  <a class="btn btn-danger mx-3" (click)="submitCode($event)">  تغيير كلمة المرور </a></div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+

@@ -1,0 +1,60 @@
+label {
+    color: #6F7072 !important;
+    font-size: .6rem !important;
+    margin-bottom: -100% !important;
+    font-weight: bold !important;
+}
+
+.container {
+    border-radius: 15px !important;
+}
+
+select,
+input {
+    color: #0070CD !important;
+    padding: 0;
+}
+
+span i {
+    color: #0070CD !important;
+    font-size: 110%;
+    margin-right: -20%;
+}
+
+
+#search {
+    background-image: url("https://d1aovdz1i2nnak.cloudfront.net/vezeeta-web-reactjs/55283/_next/static/images/search-header-background-en.jpg");
+    /* background-position: 00px 50px; */
+    background-clip: padding-box;
+    background-size: cover;
+    background-size: 110% 140%;
+    background-repeat: no-repeat;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+h1 {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #6F7072 !important;
+
+}
+
+h3:nth-last-child(1) {
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #6F7072 !important;
+    margin-bottom: 30px;
+
+}
+
+.title {
+    font-size: 1.2rem;
+    color: #EF0F0F;
+    /* color: #0070CD; */
+    background-color: white;
+    padding: 7px;
+    border-radius: 20px;
+}

@@ -1,0 +1,25 @@
+<p-carousel [value]="products" [numVisible]="2" [numScroll]="2" [responsiveOptions]="responsiveOptions">
+    <ng-template let-product pTemplate="item">
+        <div class="border-1  border-round m-1 text-center ">
+            <div class="card text-center">
+                <div class="card-header ">
+                    Featured
+                </div>
+                <div class="card-body">
+                    <!-- <div class="card flex justify-content-center"> -->
+                    <p-scroller [items]="items" [itemSize]="50" scrollHeight="200px"
+                        styleClass="border-1 surface-border">
+                        <ng-template pTemplate="item" let-item let-options="options">
+                            <button class="flex align-items-center btn btn-primary w-100 mb-2">{{
+                                item
+                                }}</button>
+                        </ng-template>
+                    </p-scroller>
+                    <!-- </div> -->
+                </div>
+                <div class="card-footer text-body-secondary">
+                    احجز </div>
+            </div>
+        </div>
+    </ng-template>
+</p-carousel>

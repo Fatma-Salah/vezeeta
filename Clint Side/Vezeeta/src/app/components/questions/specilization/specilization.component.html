@@ -1,0 +1,26 @@
+<div class="container px-5">
+    <div *ngIf="hasquestion" class="bg-light rounded-2 text-center py-5 my-3">
+        <div class="text-success "><i class="fa-solid fa-circle-check fs-3"></i></div>
+        <div class="parent-p my-3">تم ارسال السؤال</div>
+        <div class="fg ">ستتلقى رسالة مع رابط عندما يجيب دكتور متخصص على سؤالك</div>
+    </div> 
+    <div class="px-2 mt-3">
+        <div class="parent-p my-2">
+            الإجابات الطبية
+        </div>
+        <div class="fg my-2">
+            جميع الإجابات المنشورة في هذا الموقع مكتوبة من قبل أطباء ومعالجين وخبراء صحيين تم التحقق منهم
+        </div>
+        <div class="parent my-2 mt-4">
+            موضوعات شائعة
+        </div>
+    </div>
+    <div class=" d-flex  row">
+        <div class="col-3" *ngFor="let spec of specs">
+            <div class="bg-light rounded-2 m-2" >
+                <div (click)="show(spec.id)" class="d-flex px-4 py-3 justify-content-between spec"> {{spec.name}} <i class="text-secondary fa-solid fa-chevron-left"></i> </div>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="text-center  w-100" *ngIf="load">
+    <div class="spinner-grow text-primary mx-3" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow mx-3 text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+    <div class="spinner-grow mx-3 text-primary" role="status">
+        <span class="sr-only">Loading...</span>
+    </div>
+</div>
+<div *ngIf="!load">
+    <div *ngIf="flag">
+        n odata
+    </div>
+    <div *ngIf="!flag">
+        <div class="card w-100 mb-3 rounded " *ngFor="let x of doctorslist">
+
+            <div class="card-body">
+                <div class="row px-4">
+
+                    <div class="col-2  p-3 d-flex justify-center align-self-center  ">
+
+                        <h1 class="text-danger d-felx align-self-center border rounded-circle p-5 border-primary">
+                            {{x.name[0]}}
+                        </h1>
+                        <!-- <img src="./assets/images/spec-skin.jpeg"style="width: 150px;height: 150px; ;border-radius: 200px; border: 1px solid ;" alt=""> -->
+                    </div>
+                    <div class="col-3  p-3">
+                        <h3 class="card-title m-0  ">Doctor <span style="font-size: 1.4rem; font-weight: 700;">
+                                {{x.name}}</span>
+                        </h3>
+                        <h5 class="card-title m-0"></h5>
+                        <!-- <div>ratings</div>  -->
+                        <p class="card-text"> <i class="fa-solid fa-stethoscope me-2 mt-2"></i>
+                            {{getSpecialById(x.special)}}
+                        </p>
+                        <p class="card-text"><i class="fa-solid fa-map-location-dot me-2 mt-2"></i>address</p>
+                        <p class="card-text"><i class="fa-solid fa-money-bill-wave me-2 mt-2"></i>Fees: <span
+                                style="color: red;font-size: 1.2rem;">{{x.fese}}
+                            </span>EGP
+                        </p>
+                        <p class="card-text"><i class="fa-solid fa-stopwatch me-2 mt-2" id="Wating"></i>{{x.waittime}}
+                        </p>
+                    </div>
+                    <!-- ssssssssssssssssssssssssssssssssssssssssssssssssssss -->
+                    <div class="card col-7 " style="direction: ltr;">
+                        <app-time-table [products]="getappointement(x.id)"></app-time-table>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

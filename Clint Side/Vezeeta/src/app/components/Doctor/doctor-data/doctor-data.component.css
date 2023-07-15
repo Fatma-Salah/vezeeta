@@ -1,0 +1,22 @@
+.profile-img img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+margin-left: 10px;
+
+}
+
+.cardStyle{
+  margin: 50px;
+}
+
+.joinNow {
+  border-radius: 11px 11px 0px 0px;
+  padding: 8px 0px;
+  font-size: 20px;
+  background-color: rgb(0, 112, 205);
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+

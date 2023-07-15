@@ -1,0 +1,36 @@
+th , td{
+    color: rgb(0, 112, 205) !important;
+}
+.appoint , .myAppoint{
+    height: 30px;
+    padding: 0px 10px;
+    line-height: 30px;
+    font-size: 1.4rem; 
+}
+.vezeta  a{
+    height: 30px;
+    padding: 0px 10px;
+    line-height: 30px;
+    color: rgb(128, 129, 132) !important;
+    text-decoration: none;
+}
+.myAppoint a{
+    color: rgb(0, 112, 205);
+    text-decoration: none;
+}
+table thead th{ 
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+     background-color: #F1F0EE  !important;
+     padding: 20px;
+}
+table tbody tr td{ 
+    font-size: 1.5rem;
+     padding:20px ;
+line-height: 2.2rem;
+}
+ tbody td:nth-child(4) span{
+    font-weight: bolder;
+    font-family:    sans-serif
+}

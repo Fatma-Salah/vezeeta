@@ -1,0 +1,16 @@
+input{
+  direction: rtl;
+  text-transform: lowercase;
+}
+
+label{
+  font-size: large;
+
+}
+#succMess{
+  background-color: white;
+  font-size: 32 !important;
+  margin-top: 100px;
+  margin: auto;
+  text-align: center;
+}

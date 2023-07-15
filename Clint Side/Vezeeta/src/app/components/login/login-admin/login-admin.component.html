@@ -1,0 +1,60 @@
+<div class="container my-5 parent">
+    
+  <div class="row">
+      <div class=" col-md-7 col-lg-5 m-auto">
+          <div class="joinNow"> دخول أدمن</div>
+          <div class="bg-white p-5 rounded ">
+              <form  [formGroup]="formLogin"  class="mt-4">
+                  <div class="d-flex p-1 m-1">
+                      <label asp-for="patientEmail" class="control-label col-4">   البريد الالكتروني : </label>
+                      <div class="col-8">
+                          <input type="email" id="patientEmail" name="patientEmail" placeholder="example@AppDomain.com" class="form-control" formControlName="patientEmail">
+                          <ng-container *ngIf="getEmail.touched || showError">
+                              <div
+                                *ngIf="getEmail.hasError('required')" 
+                                class=" text-danger fs-6 mb-2"
+                              >
+                              يرجى  ادخال البريد الالكتروني                                 </div>
+                            </ng-container>
+                      </div>
+                  </div>
+                  <div class="d-flex p-1 m-1">
+                      <label for="patientPassword" class="control-label col-4"> كلمة المرور : </label>
+                      <div class="col-8">
+                  <input type="password" name="patientPassword" id="patientPassword" placeholder="كلمة المرور" class="form-control"  formControlName="patientPassword" />
+                  <ng-container *ngIf="getPass.touched || showError">
+      
+                      <div
+                        *ngIf="getPass.hasError('required')" 
+                        class=" text-danger fs-6 mb-2"
+                      >
+                      يرجى  ادخال كلمة المرور
+                      </div>
+                
+                    </ng-container>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <input type="submit" value=" دخول" class="btn btn-danger m-auto d-block px-4 mt-4 w-100"  (click)="Login($event)"/>
+                  </div>
+                 <div class="d-flex flex-wrap justify-content-between align-items-center p-3" >
+                 </div>
+              </form>
+              <ng-container *ngIf="showError && formLogin.valid">
+                <div class="text-danger fs-6 text-center">
+                   البريد الإلكتروني او كلمة المرور التي ادخلتها غير صحيحة، يرجى المحاولة مرة اخرى
+                </div>
+              </ng-container>
+
+              <hr style="height:2px" />
+          </div>
+      </div>
+
+  </div>
+
+</div>
+
+
+
+
+

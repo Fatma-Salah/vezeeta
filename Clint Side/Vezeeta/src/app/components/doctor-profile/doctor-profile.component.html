@@ -1,0 +1,465 @@
+<div class="container-fluid emp-profile profile-work" *ngIf="loaderDr==true">
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="profile-img">
+        <img src={{doctor?.image}} alt="" />
+        <div class="file btn btn-lg btn-primary">
+          Change Photo
+          <input required type="file" accept=".png,.jpeg,.jpg" id="image" name="image" class="form-control col-8"
+            (change)="imagechange($event)" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="profile-head">
+        <h3>
+          {{doctor?.name}} دكتور
+        </h3>
+        <h4>
+          تخصص : {{DrSpec}}
+        </h4>
+      </div>
+    </div>
+    <!-- <div class="col-md-2">
+        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile" />
+      </div> -->
+  </div>
+  <div class="container-fluid ">
+    <div class="row justify-content-between my-5">
+
+      <!-- form 1 -->
+      <ng-container *ngIf="updateClinicFlag==false">
+        <div class="col-12 col-md-3">
+          <form class="row g-3 " (submit)="clinincAdd()" [formGroup]="clinicForm">
+            <h1>اضافة عيادة</h1>
+            <div class="col-6">
+
+              <div *ngIf="clinicNameController.hasError('required')" class="text-danger">*</div>
+              <input type="text" class="form-control" formControlName="clinicName" id="name" value="" required
+                placeholder="اسم العيادة">
+            </div>
+            <div class="col-6">
+
+              <div *ngIf="clinicPhoneController.hasError('required')" class="text-danger">*</div>
+              <input type="tel" class="form-control" id="tel" value="" formControlName="ClinicPhone" required
+                placeholder="رقم التليفون">
+            </div>
+
+            <div class="col-md-5">
+              <div *ngIf="cityController.hasError('required')" class="text-danger">*</div>
+              <select name="" id="city" class="form-select" (change)="cityChange($event,cityInpt) " #cityInpt
+                formControlName="city">
+                <option value="" disabled selected>اختار المحافظة</option>
+                <option *ngFor="let city of cities" value="{{city?.id}}" #cityInpt>{{city?.name}}</option>
+
+              </select>
+            </div>
+            <div class="col-md-5">
+              <div *ngIf="regionController.hasError('required')" class="text-danger">*</div>
+              <select name="" id="region" class="form-select" formControlName="region">
+                <option value="" disabled selected>اختار المنطقة</option>
+                <option *ngFor="let region of selectRegion" value="{{region?.id}}">{{region?.name}}</option>
+
+              </select>
+            </div>
+
+            <div class="col-3">
+
+              <!-- <div *ngIf="clinicNameController.hasError('required')" class="text-danger">*</div> -->
+              <input type="text" class="form-control" id="sq" value="" formControlName="sq" required
+                placeholder="المربع">
+            </div>
+            <div class="col-9">
+
+              <div *ngIf="stController.hasError('required')" class="text-danger">*</div>
+              <input type="text" class="form-control" id="st" value="" formControlName="st" required
+                placeholder="الشارع">
+            </div>
+            <div class="col-4">
+
+              <div *ngIf="appartController.hasError('required')" class="text-danger">*</div>
+              <input type="text" class="form-control" id="appart" value="" formControlName="appart" required
+                placeholder="شقة">
+            </div>
+
+            <div class="col-4">
+
+              <div *ngIf="floorController.hasError('required')" class="text-danger">*</div>
+              <input type="text" class="form-control" id="floor" value="" formControlName="floor" required
+                placeholder="الدور">
+            </div>
+            <div class="col-4">
+
+              <div *ngIf="buildingController.hasError('required')" class="text-danger">*</div>
+              <input type="text" class="form-control" id="build" value="" formControlName="building" required
+                placeholder="عمارة">
+            </div>
+            <div class="col-8">
+
+              <!-- <div *ngIf="descController.hasError('required')" class="text-danger">*</div> -->
+              <input type="text" class="form-control" id="note" value="" formControlName="descr" required
+                placeholder="معلومات اضافية ">
+
+            </div>
+            <div class="col-4">
+
+              <input type="number" class="form-control" id="note" value="" formControlName="fees" required
+                placeholder="السعر  ">
+            </div>
+
+            <div class="col-12">
+              <button class="btn btn-primary" type="submit">اضافة </button>
+            </div>
+          </form>
+
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="updateClinicFlag==true">
+        <div class="col-12 col-md-3">
+
+          <div class="pass-parent ">
+
+            <a style="color: rgb(153, 153, 153)" class="d-block" [routerLinkActive]="'linkActive '"
+              [routerLink]="['/account/profile']" [routerLinkActiveOptions]="{ exact: true }">
+              <div class="pass-Change">
+                <i class="fas fa-exclamation-circle"></i>
+                <span class="d-inline-block mx-1"> صفحتي </span>
+              </div>
+            </a>
+
+            <a style="color: rgb(153, 153, 153)" class="d-block" [routerLinkActive]="'linkActive '"
+              [routerLink]="['/doctor/changePassword']" [routerLinkActiveOptions]="{ exact: true }">
+
+              <div class="pass-Change">
+                <span class=" fa fa-users "></span>
+                <span class="d-inline-block mx-1">تغيير كلمة المرور </span>
+              </div>
+            </a>
+
+            <a style="color: rgb(153, 153, 153)" class="d-block" [routerLinkActive]="'linkActive '"
+              [routerLink]="['/updateClinic',id]" (click)="updateClinic()" [routerLinkActiveOptions]="{ exact: true }">
+
+              <div class="pass-Change">
+
+                <span class="d-inline-block mx-1">تعديل بيانات
+                  العيادة </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- form 2  -->
+      <div class="col-12 col-md-3">
+        <form method="post" (submit)="onPhoneSubmit($event)" class="border-1 border-light bg-white mb-5 bg-light">
+          <h2>
+
+            <i class="fa-solid fa-phone text-primary">اضافة هاتف اخر</i>
+          </h2>
+          <div *ngFor="let phone of doctor_phones" class="input-group">
+            <button *ngIf="noOfPhone>1" (click)="removePhone(remoVal,$event)"
+              class="btn btn-close text-danger input-group-text me-4  "></button>
+            <input type="text" readonly value="{{phone.phone}}" class="my-2" #remoVal>
+          </div>
+          <!-- ----------------------------------------  -->
+          <div class="form-outline my-2 d-flex justify-content-around">
+
+            <div class="col-1">
+              <button class="btn btn-primary" (click)="addAnotherPhone(inptval)"><i
+                  class="fa-regular fa-plus"></i></button>
+            </div>
+
+            <div class="col-7">
+              <input required name="Doctors_Phones" type="tel" id="DPhone" class="form-control col-8 "
+                placeholder="رقم الموبايل " #inptval />
+            </div>
+
+            <!-- <div class="col-2">
+              <label class="form-label " for="DPhone">رقم الموبايل </label>
+            </div> -->
+          </div>
+
+
+          <div *ngIf="phoneValid==false" class="text-danger input-group-text border-white bg-white">
+            رقم الموبايل غير صحيح
+          </div>
+
+          <div *ngIf="phone1Exist==true" class="text-danger input-group-text border-white bg-white">
+            هذا الرقم بالفعل مسجل
+          </div>
+
+        </form>
+
+
+      </div>
+
+      <!-- form 3  -->
+      <div class="col-12 col-md-4">
+
+        <form [formGroup]="DoctorUpdateForm" enctype="multipart/form-data" method="post" (submit)="onSubmit($event)"
+          class="border-1 border-light" *ngIf="formGroupFlag==true">
+
+
+          <h2>تعديل البيانات </h2>
+
+
+          <!--  name input -->
+          <div class="form-outline my-2 d-flex justify-content-around ">
+
+            <div class="col-2">
+              <label class="form-label " for="DName">الاسم </label>
+            </div>
+
+            <div class="col-7 ">
+              <input required formControlName="name" type="text" id="DName" class="form-control col-8 " name="name"
+                value="{{nameController.value}}" />
+            </div>
+
+          </div>
+          <ng-container *ngIf="nameController.touched ">
+            <div *ngIf="nameController.hasError('required')" class="text-danger input-group-text border-white bg-white">
+              يرجى ادخال الاسم
+            </div>
+
+            <div *ngIf="nameController.hasError('minlength')"
+              class="text-danger input-group-text border-white bg-white">
+              يرجي ادخال الاسم بالكامل
+            </div>
+          </ng-container>
+
+          <!-- ------------------------------------------------------------------------------------------- -->
+          <!-- email input -->
+          <div class="form-outline my-2 d-flex justify-content-around ">
+
+            <div class="col-2">
+              <label class="form-label " for="Demail">البريد الالكتروني </label>
+            </div>
+            <div class="col-7">
+              <input required formControlName="email" type="email" id="Demail" class="form-control col-8"
+                placeholder="ُExample@domain.com" name="email" />
+            </div>
+
+
+          </div>
+          <ng-container *ngIf="emailController.touched ">
+            <div *ngIf="emailController.hasError('required')"
+              class="text-danger input-group-text border-white bg-white">
+              يرجى ادخال البريد الالكتروني
+            </div>
+
+            <div *ngIf="emailController.hasError('email')" class="text-danger input-group-text m-auto bg-white">
+              البريد الالكتروني غير صحيح
+            </div>
+
+            <div *ngIf="emailExist==true" class="text-danger input-group-text m-auto bg-white">
+              هذا البريد بالفعل مسجل
+            </div>
+          </ng-container>
+
+
+
+          <!-- gender -->
+          <div class="form-outline my-2 d-flex justify-content-around ">
+
+            <div class="col-2">
+              <label class="form-label "> النوع </label>
+            </div>
+            <div class="col-3">
+              <label for="male">ذكر</label>
+              <input required formControlName="gender" type="radio" id="male" name="gender" value="m" class="col-4" />
+            </div>
+            <div class="col-3">
+              <label for="female">انثي</label>
+              <input required formControlName="gender" type="radio" id="female" name="gender" class=" col-4" value="f"
+                checked />
+            </div>
+
+
+            <!-- <div *ngIf="genderController.hasError('required')" class="text-danger input-group-text border-white bg-white">
+                    رقم الموبايل غير صحيح
+                  </div> -->
+          </div>
+
+          <!-- specilize drop down list  -->
+          <div class="form-outline my-2 d-flex justify-content-around  ">
+
+            <div class="col-2">
+              <label class="form-label  " for="spec">التخصص </label>
+            </div>
+            <div class="col-7">
+              <select name="id_specialize" id="spec" class="form-select" formControlName="id_specialize">
+                <option *ngFor="let spec of specs" value="{{spec.id}}">{{spec.name}}</option>
+              </select>
+            </div>
+
+          </div>
+          <ng-container *ngIf="id_specializeController.touched ">
+            <div *ngIf="id_specializeController.hasError('required')" class="text-danger">
+              يرجي اختيار التخصص
+            </div>
+
+          </ng-container>
+
+
+
+
+          <!-- confirm password -->
+          <!-- <div class="form-outline my-2 d-flex justify-content-around ">
+
+                <div class="col-7">
+                  <input required formControlName="confirmPassword" type="password" id="Cpassword"
+                    class="form-control col-8" placeholder=" تأكيد كلمة المرور " />
+                </div>
+                <div class="col-2">
+                  <label class="form-label " for="Cpassword">تأكيد كلمة المرور </label>
+                </div>
+              </div>
+              <ng-container *ngIf="CpasswordController.touched || clickpress==true">
+                <div *ngIf="CpasswordController.hasError('required')"
+                  class="text-danger input-group-text border-white bg-white">
+                  يرجى ادخال كلمة المرور
+                </div>
+
+                <div *ngIf="CpasswordController.hasError('minlength')"
+                  class="text-danger input-group-text border-white bg-white">
+                  كلمة المرور قصيرة جداً! يجب ان تكون اكثر من ٦ احرف
+                </div>
+
+                <div *ngIf="confirmPassFlag===true && !CpasswordController.hasError('required')"
+                  class="text-danger input-group-text border-white bg-white">
+                  كلمة المرور غير مطابقة
+                </div>
+              </ng-container> -->
+
+
+
+
+
+
+
+          <!-- experience and waiting time -->
+          <div class="d-flex justify-content-around">
+
+            <!-- waiting time -->
+            <div class="form-outline my-2 d-flex justify-content-around ">
+
+              <div class="col-4">
+                <label class="form-label " for="waiting"> waiting time </label>
+              </div>
+              <div class="col-7">
+                <select name="waiting_time" id="waiting_time" formControlName="waiting_time" class="form-select">
+                  <option value="5">5 دقايق</option>
+                  <option value="10">10 دقايق</option>
+                  <option value="15">15 دقيقة</option>
+                  <option value="20">20 دقيقة</option>
+                </select>
+              </div>
+
+
+
+            </div>
+            <ng-container *ngIf="waitTimeController.touched">
+              <div *ngIf="waitTimeController.hasError('required')" class="text-danger">
+                يرجى ادخال كلمة المرور
+              </div>
+
+              <div *ngIf="waitTimeController.hasError('minlength')" class="text-danger">
+                كلمة المرور قصيرة جداً! يجب ان تكون اكثر من ٦ احرف
+              </div>
+            </ng-container>
+
+            <!-- experience -->
+            <div class="form-outline my-2 d-flex justify-content-around ">
+
+              <div class="col-4">
+                <label class="form-label " for="experience"> الخبرة </label>
+              </div>
+
+              <div class="col-7">
+                <input required formControlName="experience" type="number" id="experience" class="form-control col-8"
+                  placeholder="الخبرة  " name="experience" />
+              </div>
+
+            </div>
+            <ng-container *ngIf="experienceController.touched">
+              <div *ngIf="experienceController.hasError('required')" class="text-danger">
+                يرجي ادخال الخبرة
+              </div>
+            </ng-container>
+          </div>
+
+          <!-- birth date -->
+          <div class="form-outline my-2 d-flex justify-content-around ">
+
+            <div class="col-2">
+              <label class="form-label " for="date"> تاريخ الميلاد </label>
+            </div>
+            <div class="col-7">
+              <input required formControlName="birth_date" name="birth_date" type="date" id="date"
+                class="col-8 form-control" value="{{formatDate}}" />
+            </div>
+
+          </div>
+          <ng-container *ngIf="birth_dateController.touched">
+            <div *ngIf="birth_dateController.hasError('required')" class="text-danger">
+              يرجي اختيار تاريخ الميلاد
+            </div>
+          </ng-container>
+
+
+
+
+
+
+          <!-- online fees -->
+          <div class="form-outline my-2 d-flex justify-content-around ">
+
+            <div class="col-2">
+              <label class="form-label " for="form3Example3"> سعر الكشف الاونلاين </label>
+            </div>
+            <div class="col-7">
+              <input required formControlName="online_fees" type="number" id="form3Example3" class="form-control col-8"
+                name="online_fees" placeholder="  سعر الكشف الاونلاين" />
+            </div>
+
+
+          </div>
+
+          <!-- description -->
+          <div class="form-outline my-2 d-flex justify-content-around ">
+
+            <div class="col-2">
+              <label class="form-label " for="description">description </label>
+            </div>
+            <div class="col-7">
+              <input required formControlName="description" type="text" id="description" class="form-control col-8"
+                placeholder=" description " name="description" />
+            </div>
+
+
+            <ng-container *ngIf="decriptionController.touched">
+              <div *ngIf="decriptionController.hasError('required')" class="text-danger">
+                يرجي ادخال الوصف
+              </div>
+            </ng-container>
+          </div>
+
+          <div class="text-center text-lg-start mt-4 pt-2">
+            <button type="submit" class="btn btn-primary btn-lg"
+              style="padding-left: 2.5rem; padding-right: 2.5rem;">تعديل</button>
+
+          </div>
+
+        </form>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</div>

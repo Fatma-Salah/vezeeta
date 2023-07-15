@@ -1,0 +1,93 @@
+<ng-container *ngIf="!isLoading">
+
+      <div class="my-5 py-5 text-center">
+        <p-progressSpinner></p-progressSpinner>
+    </div>
+</ng-container>
+
+
+    <div class="container my-5 " style="color:rgb(226,230,234)">
+        <ng-container  *ngIf="isLoading && isBooking">
+        <div class="p-3 ">
+            <div class="appoint ">
+                <span class="vezeta">
+                    <a routerLink="/" class="" ><span  >فيزيتا</span></a >
+                 </span >
+                 <span style="  color: rgb(128, 129, 132);">/</span>
+               <span  class="myAppoint">
+                  <a routerLink="/patientAppoint" class="">  <span > مواعيدي </span>   </a>
+                </span>
+          </div>
+        </div>
+        
+          <div class="tableAppoint">
+            <table class="table  table-bordered">
+                <thead  >
+                    <tr>
+                        <th> اسم الدكتور</th>
+                        <th> أين</th>
+                        <th>   موعد الحجز</th>
+                        <th>تفاصيل</th>
+                    </tr>
+                </thead>
+                <tbody class="text-center">
+               
+                  <ng-container  *ngIf="appointment !=[]" >
+                    <ng-container *ngFor="let appoint of appointment ; let i= index">
+                            <tr>
+                                <td>{{DoctorsName[i]}}</td> 
+                                <td *ngIf="Address !=null">
+                                    <span *ngIf="Address.city.name" >{{Address.city.name}} -  </span>
+                                    <span *ngIf="Address.street" >{{Address.street}} -  </span>
+                                    <span *ngIf="Address.square"> {{Address.square}} - </span>
+                                    <span *ngIf="Address.building"> {{Address.building}} - </span>
+                                    <span *ngIf="Address.floor_num"> الدور {{words[Address.floor_num]}}  - </span>
+                                    <span *ngIf="Address.flat_num">  شقه رقم {{  Address.flat_num}} </span>
+                                    <br>
+                                    
+                                    <span *ngIf="Address.notes">{{Address.notes}}</span>
+                                </td>
+                                <td>{{appointDate[i]}}</td>
+                              
+                                <ng-container *ngIf="!appoint.type">
+                                   <td>تم إلغاء الموعد</td>
+                                </ng-container>
+                                <ng-container *ngIf="appoint.type">
+                                    <td>
+                                        يمكنك الذهاب للعياده يوم 
+                                      <span>  {{getDay[i]}}</span>
+                                     الموافق  <span>{{fullBookingDate[i]}}</span>
+                                     من  الساعه   
+                                       <span> {{startDate[i]}}</span>
+                                        الى
+            
+                                       <span> {{endDate[i]}}</span>
+                                    </td>
+                                </ng-container>
+                               
+                            </tr>
+                    </ng-container>
+                  </ng-container>
+                </tbody>
+            </table>
+          </div>
+   
+</ng-container>
+<ng-container *ngIf="!isBooking && isLoading">
+    <div class="p-3 ">
+        <div class="appoint ">
+            <span class="vezeta">
+                <a routerLink="/" class="" ><span  >فيزيتا</span></a >
+             </span >
+             <span style="  color: rgb(128, 129, 132);">/</span>
+           <span  class="myAppoint">
+              <a>  <span > مواعيدي </span>   </a>
+            </span>
+      </div>
+    </div>
+
+    <div class="p-5 text-center text-secondary bg-white fs-3">
+        <span >لم تقم بالحجز مع اي دكتور </span>
+    </div>
+</ng-container>
+</div>

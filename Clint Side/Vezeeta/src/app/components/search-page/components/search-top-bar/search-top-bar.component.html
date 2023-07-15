@@ -1,0 +1,80 @@
+<div id="search">
+    <div class="container">
+        <h1>Better Healthcare for a Better Life</h1>
+
+        <h3>Best Doctors in Egypt</h3>
+        <h3><i class="fa-regular fa-calendar-check m-2 title"></i>book doctor or <i
+                class="title fa-solid fa-phone m-2"></i>call
+            online
+        </h3>
+    </div>
+    <div class=" bg-white  p-2 container">
+        <form class=" d-flex rounded border" [formGroup]=" Form" (ngSubmit)="onSubmit()">
+            <!-- ---------------------------------------------- specialization -------------------------------------------- -->
+
+            <div class="  col p-0 border">
+                <label class=" form-label ms-3">Select speciality</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-0"><i class="fa-solid fa-stethoscope"></i> </span>
+                    <select name="" class="form-control text-primary border-0" formControlName="special">
+                        <option value="0">اختر التخصص</option>
+                        <option *ngFor="let elent of specializationList" value={{elent.id}} selected>{{elent.name}}
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+            <!-- ---------------------------------------------- reigon -------------------------------------------- -->
+            <div class="  col p-0 border">
+                <label for="formGroupExampleInput" class=" form-label ms-3">In this City</label>
+                <div class="input-group ">
+                    <span class="input-group-text bg-white border-0" id="basic-addon1">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </span>
+                    <select name="" class="form-control  text-primary border-0" #hamad formControlName="reigon"
+                        (change)="selectReigon(hamad.value)">
+                        <option value="0">اختر المحافظه</option>
+                        <option value={{elent.id}} *ngFor="let elent of regionList">{{elent.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- ---------------------------------------------- city -------------------------------------------- -->
+
+            <div class="  col p-0 border">
+                <label for="formGroupExampleInput" class=" form-label ms-3">In this Area</label>
+                <div class="input-group  ">
+                    <span class="input-group-text bg-white border-0" id="basic-addon1">
+                        <i class="fa-solid fa-map-location-dot"></i>
+                    </span>
+                    <select name="" class="form-control text-primary border-0" formControlName="city">
+                        <option value="0">اخترالمطقه</option>
+                        <option value={{elent.id}} *ngFor="let elent of cityList">
+                            {{elent.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- ---------------------------------------------- doctor name -------------------------------------------- -->
+
+            <div class="  col p-0 border">
+                <label for="formGroupExampleInput" class=" form-label ms-3"
+                    style="font-size: .6rem;margin-bottom: -100%;">Example
+                    label</label>
+                <div class="input-group  ">
+                    <span class="input-group-text bg-white border-0" id="basic-addon1">
+                        <i class="fa-solid fa-user-doctor"></i>
+                    </span>
+                    <input type="email" class="form-control  border-0 text-primary" id=" floatingInput"
+                        placeholder="اسم الطبيب" formControlName="name">
+                </div>
+
+            </div>
+            <!-- ---------------------------------------------- button -------------------------------------------- -->
+            <button class="btn px-4 text-white rounded-0" style="background-color: #EF0F0F;">
+                <i class="fa-solid fa-magnifying-glass "></i>
+            </button>
+
+        </form>
+    </div>
+</div>

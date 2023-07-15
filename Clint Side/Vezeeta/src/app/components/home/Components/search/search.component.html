@@ -1,0 +1,145 @@
+<div class="container bg-white border-0 p-0 gap-0  ">
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs ">
+        <li class="nav-item col ">
+            <a class="nav-link d-flex justify-content-center align-items-center gap-3 active ounded-0"
+                data-bs-toggle="tab" href="#home">
+                <div>
+                    <i class="fa-solid fa-calendar-days h2"></i>
+                </div>
+                <div>
+
+                    <h2 class="m-0">Book a doctor</h2>
+                    <h5>Examination or procedure</h5>
+                </div>
+
+            </a>
+        </li>
+        <li class="nav-item col">
+            <a class="nav-link d-flex justify-content-center align-items-center gap-3 " data-bs-toggle="tab"
+                href="#menu1">
+                <div>
+                    <i class="fa-solid fa-headset h2"></i>
+                </div>
+                <div>
+                    <h2 class="m-0">Telehealth</h2>
+                    <h5>Call consultation with doctor</h5>
+                </div>
+            </a>
+        </li>
+
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content py-3 border ">
+        <div class="tab-pane container active " id="home">
+            <form class="d-flex rounded border" [formGroup]="Form" (ngSubmit)="onSubmit()">
+                <div class="  col p-0 border">
+                    <label class=" form-label ms-3">Select speciality</label>
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-0"><i class="fa-solid fa-stethoscope"></i> </span>
+                        <select name="" class="form-control text-primary border-0" formControlName="special">
+                            <option value="0">اختر التخصص</option>
+                            <option *ngFor="let elent of specializationList" value={{elent.id}} selected>{{elent.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+                <!-- ---------------------------------------------- reigon -------------------------------------------- -->
+                <div class="  col p-0 border">
+                    <label for="formGroupExampleInput" class=" form-label ms-3">In this City</label>
+                    <div class="input-group ">
+                        <span class="input-group-text bg-white border-0" id="basic-addon1">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </span>
+                        <select name="" class="form-control  text-primary border-0" #hamad formControlName="reigon"
+                            (change)="selectReigon(hamad.value)">
+                            <option value="0">اختر المحافظه</option>
+                            <option value={{elent.id}} *ngFor="let elent of regionList">{{elent.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- ---------------------------------------------- city -------------------------------------------- -->
+
+                <div class="  col p-0 border">
+                    <label for="formGroupExampleInput" class=" form-label ms-3">In this Area</label>
+                    <div class="input-group  ">
+                        <span class="input-group-text bg-white border-0" id="basic-addon1">
+                            <i class="fa-solid fa-map-location-dot"></i>
+                        </span>
+                        <select name="" class="form-control text-primary border-0" formControlName="city">
+                            <option value="0">اخترالمطقه</option>
+                            <option value={{elent.id}} *ngFor="let elent of cityList">
+                                {{elent.name}}</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- ---------------------------------------------- doctor name -------------------------------------------- -->
+
+                <div class="  col p-0 border">
+                    <label for="formGroupExampleInput" class=" form-label ms-3"
+                        style="font-size: .6rem;margin-bottom: -100%;">Example
+                        label</label>
+                    <div class="input-group  ">
+                        <span class="input-group-text bg-white border-0" id="basic-addon1">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </span>
+                        <input type="email" class="form-control  border-0 text-primary" id=" floatingInput"
+                            placeholder="اسم الطبيب" formControlName="name">
+                    </div>
+
+                </div>
+                <!-- ---------------------------------------------- button -------------------------------------------- -->
+
+                <button class="btn px-4 text-white rounded-0" style="background-color: #EF0F0F;">
+                    <i class="fa-solid fa-magnifying-glass "></i>
+                </button>
+
+            </form>
+
+        </div>
+        <div class="tab-pane container fade " id="menu1">
+            <form class="d-flex w-50  m-auto">
+                <div class="  col p-0 border">
+                    <label for="formGroupExampleInput" class=" form-label ms-3">Select speciality</label>
+                    <div class="input-group  ">
+                        <span class="input-group-text bg-white border-0" id="basic-addon1">
+                            <i class="fa-solid fa-stethoscope"></i>
+
+                        </span>
+                        <select name="" class="form-control text-primary border-0" id="">
+                            <option selected>no one selected</option>
+                            <option *ngFor="let elent of specializationList" value={{elent.id}} selected>{{elent.name}}
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+                <div class="  col p-0 border">
+                    <label for="formGroupExampleInput" class=" form-label ms-3"
+                        style="font-size: .6rem;margin-bottom: -100%;">Example
+                        label</label>
+                    <div class="input-group  ">
+
+
+                        <span class="input-group-text bg-white border-0" id="basic-addon1">
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </span>
+                        <input type="email" class="form-control  border-0 text-primary" id=" floatingInput"
+                            placeholder="name@example.com">
+
+
+
+                    </div>
+
+                </div>
+                <button class="btn   px-4 text-white rounded-0" style="background-color: #EF0F0F;">
+                    <i class="fa-solid fa-magnifying-glass fa-flip-horizontal"></i>
+                </button>
+
+            </form>
+        </div>
+    </div>
+</div>

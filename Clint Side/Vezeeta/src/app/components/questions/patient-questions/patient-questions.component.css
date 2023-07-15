@@ -1,0 +1,57 @@
+.root{
+    --background:#E2E6EA;
+    --bluecolor:#0070CD;
+    --lightblue:#E6F1FF;
+}
+body{
+    text-align:right ;
+    background-color: var(--background);
+    margin: auto;
+}
+.fg{
+    color: rgb(97, 96, 96);
+    font-size: 1.1rem;
+
+}
+.parent {
+    font-size: 1.5rem;
+    color: rgb(74, 73, 73);
+    font-weight: bold;
+} 
+div{
+    direction: rtl;
+
+}
+.desc{
+    color: rgb(93, 92, 92);
+    font-size: 1.4rem;
+}
+.parent-p{
+    color:#0266b7;
+    font-weight: bold;
+    font-size: 1.2rem;
+
+}
+.dname{
+    color:#0266b7;
+    font-size: 1rem;
+}
+img{
+    border: 0.5px solid rgb(128, 127, 127);
+    border-radius: 50%;
+    width: 7%;
+}
+.ans{
+    font-size: 1.4rem;
+    color: rgb(74, 73, 73);
+}
+.anc{
+    color: rgb(97, 96, 96);
+    font-size: 0.88rem;
+}
+.btn-bg{
+    background-color: #0266b7;
+    direction: ltr;
+    position:absolute;
+    right: 70%;
+}
